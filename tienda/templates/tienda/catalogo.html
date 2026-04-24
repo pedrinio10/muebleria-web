@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+<div class="container">
+<a href="/" class="navbar-brand">Mueblería Torres</a>
+</div>
+</nav>
+
+<section class="container py-5">
+<h1 class="text-center mb-5">Catálogo Completo</h1>
+<form method="GET" class="mb-5">
+<div class="row g-2">
+
+<div class="col-md-10">
+<input type="text" name="buscar" class="form-control form-control-lg"
+placeholder="Buscar productos...">
+</div>
+
+<div class="col-md-2">
+<button class="btn btn-dark btn-lg w-100">
+Buscar
+</button>
+</div>
+
+</div>
+</form>
+
+<div class="row g-4">
+
+{% for producto in productos %}
+
+<div class="col-md-4">
+<div class="card h-100 shadow">
+
+{% if producto.imagen %}
+<img src="{{ producto.imagen.url }}" class="card-img-top" style="height:250px; object-fit:cover;">
+{% endif %}
+
+<div class="card-body">
+<h4>
+<a href="/producto/{{ producto.id }}/" class="text-decoration-none text-dark">
+{{ producto.nombre }}
+</a>
+</h4>
+<p>{{ producto.categoria }}</p>
+<p>{{ producto.descripcion }}</p>
+<h5 class="text-success">$ {{ producto.precio }}</h5>
+<p class="small text-muted">
+12 cuotas de $ {% widthratio producto.precio 12 1 %}
+</p>
+
+<a href="https://wa.me/542664158982?text=Hola,%20quiero%20consultar%20por:%20{{ producto.nombre }}%0APrecio:%20${{ producto.precio }}%0A%C2%BFSigue%20disponible?"
+class="btn btn-success w-100">
+Consultar
+</a>
+
+</div>
+</div>
+</div>
+
+{% endfor %}
+
+</div>
+</section>
+
+</body>
+</html>
