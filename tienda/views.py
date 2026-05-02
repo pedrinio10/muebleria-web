@@ -1,6 +1,6 @@
 from .models import Producto
 from django.shortcuts import render, get_object_or_404
-
+from django.core.paginator import Paginator
 
 def inicio(request):
     categoria = request.GET.get('categoria')
@@ -10,19 +10,20 @@ def inicio(request):
     else:
         productos = Producto.objects.all()[:6]
 
-        ofertas = Producto.objects.filter(en_oferta=True)[:3]
+    ofertas = Producto.objects.filter(en_oferta=True)[:3]
 
     return render(request, 'tienda/inicio.html', {
         'productos': productos,
         'ofertas': ofertas
     })
 
-
 def catalogo(request):
+    productos = Producto.objects.all()
+
     categoria = request.GET.get('categoria')
     buscar = request.GET.get('buscar')
-
-    productos = Producto.objects.all()
+    ordenar = request.GET.get('ordenar')
+    oferta = request.GET.get('oferta')
 
     if categoria:
         productos = productos.filter(categoria=categoria)
@@ -30,8 +31,21 @@ def catalogo(request):
     if buscar:
         productos = productos.filter(nombre__icontains=buscar)
 
-    return render(request, 'tienda/catalogo.html', {
-        'productos': productos
+    if oferta:
+        productos = productos.filter(en_oferta=True)
+
+    if ordenar == "menor":
+        productos = productos.order_by("precio")
+    elif ordenar == "mayor":
+        productos = productos.order_by("-precio")
+
+    paginator = Paginator(productos, 9)
+    page_number = request.GET.get('page')
+    productos = paginator.get_page(page_number)
+
+    return render(request, "tienda/catalogo.html", {
+        "productos": productos,
+        "categorias": Producto.CATEGORIAS,
     })
 
 def detalle_producto(request, id):

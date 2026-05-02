@@ -1,154 +1,256 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'tienda/base.html' %}
+{% load static %}
+{% block title %}Inicio | Mueblería Torres{% endblock %}
 
-<title>Mueblería Torres</title>
+{% block extra_css %}
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-body{
-    font-family:'Poppins', sans-serif;
-    background:#f8f9fa;
+.hero-content h1,
+.hero-content p,
+.hero-content a{
+    opacity:0;
+    transform:translateY(25px);
+    animation:heroText .9s ease forwards;
 }
 
-.navbar{
-    box-shadow:0 2px 10px rgba(0,0,0,.08);
+.hero-content p{
+    animation-delay:.25s;
 }
 
-.hero{
-    background: linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
-    url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85');
-    background-size: cover;
+.hero-content a{
+    animation-delay:.45s;
+}
+
+@keyframes heroText{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.hero-slider{
+    height:85vh;
+}
+
+.hero-slide{
+    height:85vh;
+    background-size:cover;
     background-position:center;
-    height:90vh;
+    position:relative;
+}
+
+.hero-slide::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.45);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    height:85vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+}
+
+.hero-content h1{
+    font-size:3.6rem;
+    font-weight:700;
+    color:white;
+}
+
+.hero-content p{
+    font-size:1.3rem;
+    color:white;
+    margin-bottom:25px;
+}
+
+@media(max-width:768px){
+    .hero-slider,
+    .hero-slide,
+    .hero-content{
+        height:70vh;
+    }
+
+    .hero-content h1{
+        font-size:2.3rem;
+    }
+
+    .hero-content p{
+        font-size:1rem;
+    }
+}
+
+.promo-section{
+    background:linear-gradient(90deg,#111,#222);
+    color:white;
+    padding:20px 0;
+    border-radius:0 0 20px 20px;
+}
+
+.categoria-card{
+    position:relative;
+    overflow:hidden;
+    border-radius:24px;
+    height:320px;
+    box-shadow:0 15px 35px rgba(0,0,0,.14);
+    transition:.35s;
+}
+
+.categoria-card:hover{
+    transform:translateY(-8px);
+}
+
+.categoria-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.categoria-card:hover .categoria-img{
+    transform:scale(1.08);
+}
+
+.categoria-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top, rgba(0,0,0,.75), rgba(0,0,0,.15));
     color:white;
     display:flex;
-    align-items:center;
+    flex-direction:column;
+    justify-content:end;
+    padding:28px;
 }
 
-.hero h1{
-    font-size:3.2rem;
+.categoria-overlay h3{
+    font-size:32px;
+    font-weight:700;
 }
 
-.card{
-    border:none;
-    border-radius:18px;
+.oferta-card{
+    background:#fffaf5;
+    border-radius:22px;
     overflow:hidden;
+    box-shadow:0 12px 30px rgba(0,0,0,.10);
     transition:.3s;
 }
 
-.card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 20px 35px rgba(0,0,0,.12);
+.oferta-card:hover{
+    transform:translateY(-7px);
 }
 
-.btn-warning{
-    border-radius:30px;
-    padding:12px 28px;
-    font-weight:600;
+.confianza-home{
+    background:#fffaf5;
+    border-radius:22px;
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+    padding:25px;
 }
 
-.whatsapp{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#25d366;
-    color:white;
-    padding:15px 18px;
-    border-radius:50%;
-    font-size:24px;
-    text-decoration:none;
-    box-shadow:0 8px 18px rgba(0,0,0,.18);
-    z-index:999;
+@media(max-width:768px){
+    .hero h1{
+        font-size:2.4rem;
+    }
+
+    .hero{
+        height:70vh;
+    }
 }
 
-footer{
-    background:#111;
-    color:white;
-    padding:40px 0;
-    margin-top:60px;
-}
+{% endblock %}
 
-</style>
+{% block content %}
 
-</head>
-<body>
+<section id="heroSlider" class="carousel slide hero-slider" data-bs-ride="carousel" data-bs-interval="4000">
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-<div class="container">
+<div class="carousel-inner">
 
-<a class="navbar-brand" href="/">Mueblería Torres</a>
+<div class="carousel-item hero-slide active" style="background-image: url({% static 'img/dormitorio.jpg' %});">
+    <div class="hero-content text-center text-white">
+        <h1>El descanso es lo más importante</h1>
+        <p>Colchones y sommiers pensados para tu comodidad</p>
+        <a href="/catalogo/?categoria=Colchon" class="btn-catalogo">
+            Ver catálogo
+        </a>
+    </div>
+</div>
 
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
-<span class="navbar-toggler-icon"></span>
-</button>
+<div class="carousel-item hero-slide " style="background-image: url({% static 'img/living.jpg' %});">
+    <div class="hero-content text-center text-white">
+         <h1>Renová tu living con estilo</h1>
+         <p>Sillones, esquineros y muebles para disfrutar tu hogar</p>
+         <a href="/catalogo/?categoria=Living" class="btn-catalogo">
+             Ver catálogo
+         </a>
+    </div>
+</div>
 
-<div class="collapse navbar-collapse" id="menu">
-<ul class="navbar-nav ms-auto">
-<li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
-<li class="nav-item"><a class="nav-link" href="/catalogo/">Catálogo</a></li>
-<li class="nav-item"><a class="nav-link" href="#">Ofertas</a></li>
-<li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
-</ul>
+<div class="carousel-item hero-slide " style="background-image: url({% static 'img/muebleria.jpg' %});">
+    <div class="hero-content text-center text-white">
+        <h1>Muebles que acompañan tu vida</h1>
+        <p>Diseño, calidad y atención personalizada</p>
+        <a href="/catalogo/" class="btn-catalogo">
+            Ver catálogo
+        </a>
+    </div>
+</div>
+
+<div class="carousel-indicators">
+
+<button type="button" data-bs-target="#heroSlider" data-bs-slide-to="0" class="active"></button>
+
+<button type="button" data-bs-target="#heroSlider" data-bs-slide-to="1"></button>
+
+<button type="button" data-bs-target="#heroSlider" data-bs-slide-to="2"></button>
+
 </div>
 
 </div>
-</nav>
 
-<section class="py-4" style="background: linear-gradient(90deg,#111,#222); color:white;">
+</section>
+
+<section class="promo-section">
 <div class="container text-center">
 
 <h3 class="fw-bold mb-2" id="promo-banner">
 🔥 OFERTAS DE LA SEMANA
 </h3>
 
-<p class="mb-3 fs-5" id="promo-texto">
+<p class="mb-0 fs-5" id="promo-texto">
 Hasta 12 cuotas sin interés + envío gratis
 </p>
 
-<a href="/catalogo/" class="btn btn-outline-light rounded-pill px-4">
-Ver Catálogo
-</a>
-
 </div>
 </section>
 
-<!-- HERO -->
-<section class="hero">
-<div class="container text-center">
-<h1 class="display-4 fw-bold">Muebles para tu hogar</h1>
-<p class="lead">Calidad, confort y diseño</p>
-<a href="/catalogo/" class="btn btn-warning btn-lg">Ver Catálogo</a>
-</div>
-</section>
-
+{% if ofertas %}
 <section class="container py-5">
-<h2 class="text-center mb-5">🔥 Ofertas Especiales</h2>
 
-<div class="row g-4">
+<h2 class="text-center fw-bold mb-5">🔥 Ofertas Especiales</h2>
+
+<div class="row g-4 justify-content-center">
 
 {% for producto in ofertas %}
 
 <div class="col-md-4">
-<div class="card shadow h-100">
+
+<div class="oferta-card h-100">
 
 {% if producto.imagen %}
-<img src="{{ producto.imagen.url }}" class="card-img-top" style="height:230px; object-fit:cover;">
+<img src="{{ producto.imagen.url }}" style="height:230px;width:100%;object-fit:cover;">
 {% endif %}
 
-<div class="card-body text-center">
+<div class="p-4 text-center">
 
-<h4>{{ producto.nombre }}</h4>
+<span class="badge bg-danger mb-3">OFERTA</span>
 
-<p class="text-muted text-decoration-line-through">
+<h4 class="fw-bold">{{ producto.nombre }}</h4>
+
+<p class="text-muted text-decoration-line-through mb-1">
 $ {{ producto.precio }}
 </p>
 
@@ -156,110 +258,134 @@ $ {{ producto.precio }}
 $ {{ producto.precio_oferta }}
 </h3>
 
-<a href="/producto/{{ producto.id }}/" class="btn btn-danger w-100">
-Ver Oferta
+<a href="{% url 'detalle_producto' producto.id %}" class="btn btn-danger w-100 rounded-pill">
+Ver oferta
 </a>
 
 </div>
+
 </div>
+
 </div>
 
 {% endfor %}
 
 </div>
-</section>
-
-<!-- CATEGORIAS -->
-<section class="container py-5">
-<h2 class="text-center mb-4">Categorías</h2>
-
-<div class="row g-4">
-
-<div class="col-md-3">
-<a href="/?categoria=Living" class="text-decoration-none text-dark">
-<div class="card p-3 text-center shadow-sm">
-<h4>Living</h4>
-</div>
-</a>
-</div>
-
-<div class="col-md-3">
-<a href="/?categoria=Mueble" class="text-decoration-none text-dark">
-<div class="card p-3 text-center shadow-sm">
-<h4>Muebles</h4>
-</div>
-</a>
-</div>
-
-<div class="col-md-3">
-<a href="/?categoria=Colchon" class="text-decoration-none text-dark">
-<div class="card p-3 text-center shadow-sm">
-<h4>Colchones</h4>
-</div>
-</a>
-</div>
-
-<div class="col-md-3">
-<a href="/?categoria=Cocina" class="text-decoration-none text-dark">
-<div class="card p-3 text-center shadow-sm">
-<h4>Cocina</h4>
-</div>
-</a>
-</div>
-
-</div>
-
-<div class="text-center mt-4">
-<a href="/" class="btn btn-outline-dark">Ver Todos</a>
-</div>
 
 </section>
-
-<!-- PRODUCTOS -->
-<section class="container py-5" id="productos">
-<h2 class="text-center mb-4">Nuestros Productos</h2>
-
-<div class="row g-4">
-
-{% for producto in productos %}
-
-<div class="col-md-4">
-<div class="card h-100 shadow border-0 rounded-4 overflow-hidden">
-
-{% if producto.imagen %}
-<img src="{{ producto.imagen.url }}" class="card-img-top" style="height:250px; object-fit:cover;">
 {% endif %}
 
-<div class="card-body d-flex flex-column">
+<section class="container py-5">
 
-<h4 class="fw-bold">{{ producto.nombre }}</h4>
+<h2 class="text-center fw-bold mb-5" style="font-size:42px;">
+Explorá por categoría
+</h2>
 
-<p class="text-muted mb-1">{{ producto.categoria }}</p>
+<div class="row g-4">
 
-<p>{{ producto.descripcion }}</p>
-
-<h5 class="text-success fw-bold mt-auto">$ {{ producto.precio }}</h5>
-
-<p class="small">Stock disponible: {{ producto.stock }}</p>
-
-<a href="https://wa.me/542664158982?text=Hola,%20quiero%20consultar%20por:%20{{ producto.nombre }}%0APrecio:%20${{ producto.precio }}%0A%C2%BFSigue%20disponible?"
-class="btn btn-success w-100 rounded-pill">
-Consultar por WhatsApp
+<div class="col-md-4">
+<a href="/catalogo/?categoria=Living" class="text-decoration-none">
+<div class="categoria-card">
+<img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc" class="categoria-img">
+<div class="categoria-overlay">
+<h3>Living</h3>
+<p>Sillones, poltronas y esquineros</p>
+</div>
+</div>
 </a>
-
-</div>
-</div>
 </div>
 
-{% endfor %}
+<div class="col-md-4">
+<a href="/catalogo/?categoria=Mueble" class="text-decoration-none">
+<div class="categoria-card">
+<img src="https://images.unsplash.com/photo-1594026112284-02bb6f3352fe" class="categoria-img">
+<div class="categoria-overlay">
+<h3>Muebles</h3>
+<p>Roperos, placares y organizadores</p>
+</div>
+</div>
+</a>
+</div>
+
+<div class="col-md-4">
+<a href="/catalogo/?categoria=Colchon" class="text-decoration-none">
+<div class="categoria-card">
+<img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85" class="categoria-img">
+<div class="categoria-overlay">
+<h3>Colchón y Sommier</h3>
+<p>Descanso cómodo y completo</p>
+</div>
+</div>
+</a>
+</div>
+
+<div class="col-md-6">
+<a href="/catalogo/?categoria=Cocina" class="text-decoration-none">
+<div class="categoria-card">
+<img src="https://images.unsplash.com/photo-1556911220-bff31c812dba" class="categoria-img">
+<div class="categoria-overlay">
+<h3>Cocina</h3>
+<p>Mesas, sillas y comedor</p>
+</div>
+</div>
+</a>
+</div>
+
+<div class="col-md-6">
+<a href="/catalogo/?categoria=Respaldar" class="text-decoration-none">
+<div class="categoria-card">
+<img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4" class="categoria-img">
+<div class="categoria-overlay">
+<h3>respaldares</h3>
+<p>Base y descanso para tu dormitorio</p>
+</div>
+</div>
+</a>
+</div>
 
 </div>
+
 </section>
 
-<!-- WHATSAPP -->
-<a href="https://wa.me/542664158982" class="whatsapp">📱</a>
+<section class="container py-5">
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<div class="confianza-home">
+
+<div class="row text-center g-4">
+
+<div class="col-md-3">
+<h4>🚚</h4>
+<strong>Envíos</strong>
+<p class="mb-0 text-muted">Consultá disponibilidad</p>
+</div>
+
+<div class="col-md-3">
+<h4>💳</h4>
+<strong>Financiación</strong>
+<p class="mb-0 text-muted">Opciones de pago</p>
+</div>
+
+<div class="col-md-3">
+<h4>✅</h4>
+<strong>Stock actualizado</strong>
+<p class="mb-0 text-muted">Confirmación rápida</p>
+</div>
+
+<div class="col-md-3">
+<h4>💬</h4>
+<strong>Atención personalizada</strong>
+<p class="mb-0 text-muted">Por WhatsApp</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
 
 <script>
 
@@ -286,12 +412,5 @@ setInterval(() => {
 }, 3500);
 
 </script>
-<footer>
-<div class="container text-center">
-<h4>Mueblería Torres</h4>
-<p>Calidad, diseño y confort para tu hogar.</p>
-<p>📍 Córdoba, Argentina | 📞 +54 2664158982</p>
-</div>
-</footer>
-</body>
-</html>
+
+{% endblock %}
