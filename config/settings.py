@@ -26,7 +26,13 @@ SECRET_KEY = 'django-insecure-h8*wx44#$o-0yuil+_3okj@w^f1ln+m(0+&t#e^gtuwp7675$j
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['pedrinio10.pythonanywhere.com', 'localhost', '127.0.0.1']
+import os
+
+SECRET_KEY = os.environ.get("SECRET_KEY")
+
+DEBUG = os.environ.get("DEBUG") == "True"
+
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(",")
 
 
 STATIC_URL = '/static/'
