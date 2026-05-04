@@ -136,9 +136,16 @@
 <p class="mb-0">{{ producto.descripcion|linebreaksbr }}</p>
 </div>
 
-<div class="precio-detalle mb-3">
+<!-- <div class="precio-detalle mb-3">
 $ {{ producto.precio|precio_ar }}
-</div>
+</div> -->
+
+<a href="https://wa.me/542664158982?text=Hola%20quiero%20consultar%20por%20{{ producto.nombre }}"
+   class="btn btn-success">
+   Consultar precio
+</a>
+
+<p class="text-muted">Precio a consultar</p>
 
 {% if producto.mostrar_cuotas %}
 <div class="cuotas-box mb-4">

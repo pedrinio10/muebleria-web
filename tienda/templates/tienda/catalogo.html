@@ -289,14 +289,16 @@ Consultar
 $ {{ producto.precio|precio_ar }}
 </p>
 
-<h5 class="precio-catalogo">
+<!--<h5 class="precio-catalogo">
 $ {{ producto.precio_oferta|precio_ar }}
-</h5>
-{% else %}
+</h5> -->
 
-<h5 class="precio-catalogo">
-$ {{ producto.precio|precio_ar }}
-</h5>
+<a href="https://wa.me/542664158982?text=Hola%20quiero%20consultar%20por%20{{ producto.nombre }}"
+   class="btn btn-success">
+   Consultar precio
+</a>
+
+{% else %}
 
 {% endif %}
 
