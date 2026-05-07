@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-h8*wx44#$o-0yuil+_3okj@w^f1ln+m(0+&t#e^gtuwp7675$j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-
+import dj_database_url
 import os
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
@@ -118,10 +118,9 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL')
+    )
 }
 
 
