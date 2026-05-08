@@ -176,6 +176,18 @@ value="{{ request.GET.buscar }}">
 
 </select>
 
+{% if request.GET.categoria == "Colchon" %}
+
+<label class="small fw-bold mb-2">Tipo de colchón</label>
+
+<select name="tipo_colchon" class="form-select mb-3">
+<option value="">Todos</option>
+<option value="Espuma" {% if request.GET.tipo_colchon == "Espuma" %}selected{% endif %}>Espuma</option>
+<option value="Resorte" {% if request.GET.tipo_colchon == "Resorte" %}selected{% endif %}>Resorte</option>
+</select>
+
+{% endif %}
+
 <label class="small fw-bold mb-2">Ordenar</label>
 
 <select name="ordenar" class="form-select mb-3">

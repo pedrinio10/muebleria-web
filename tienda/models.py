@@ -56,6 +56,20 @@ class Producto(models.Model):
         null=True
     )
 
+    TIPOS_COLCHON = [
+        ('', 'No aplica'),
+        ('Espuma', 'Espuma'),
+        ('Resorte', 'Resorte'),
+    ]
+
+    tipo_colchon = models.CharField(
+        "Tipo de colchón",
+        max_length=20,
+        choices=TIPOS_COLCHON,
+        blank=True,
+        default=''
+    )
+
     class Meta:
         verbose_name = "Producto"
         verbose_name_plural = "Productos"

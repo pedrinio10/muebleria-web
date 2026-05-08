@@ -18,12 +18,12 @@ def inicio(request):
     })
 
 def catalogo(request):
-    productos = Producto.objects.all()
-
+    productos = Producto.objects.all().order_by("-precio")
     categoria = request.GET.get('categoria')
     buscar = request.GET.get('buscar')
     ordenar = request.GET.get('ordenar')
     oferta = request.GET.get('oferta')
+    tipo_colchon = request.GET.get('tipo_colchon')
 
     if categoria:
         productos = productos.filter(categoria=categoria)
@@ -34,8 +34,12 @@ def catalogo(request):
     if oferta:
         productos = productos.filter(en_oferta=True)
 
+    if tipo_colchon:
+        productos = productos.filter(tipo_colchon=tipo_colchon)
+
     if ordenar == "menor":
         productos = productos.order_by("precio")
+
     elif ordenar == "mayor":
         productos = productos.order_by("-precio")
 

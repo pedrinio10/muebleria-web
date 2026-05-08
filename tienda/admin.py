@@ -66,6 +66,15 @@ class ProductoAdmin(ImportExportModelAdmin):
                 'preview_imagen',
             )
         }),
+
+        ('🛋 Datos del producto', {
+            'fields': (
+                'nombre',
+                'categoria',
+                'tipo_colchon',
+                'descripcion',
+            )
+        }),
     )
 
     readonly_fields = (
