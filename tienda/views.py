@@ -23,10 +23,14 @@ def catalogo(request):
     ordenar = request.GET.get('ordenar')
     oferta = request.GET.get('oferta')
     tipo_colchon = request.GET.get('tipo_colchon')
+
     productos = Producto.objects.all().order_by("-precio")
 
     if categoria:
         productos = productos.filter(categoria=categoria)
+
+    if tipo_colchon:
+        productos = productos.filter(tipo_colchon=tipo_colchon)
 
     if buscar:
         productos = productos.filter(nombre__icontains=buscar)
@@ -34,18 +38,12 @@ def catalogo(request):
     if oferta:
         productos = productos.filter(en_oferta=True)
 
-    if tipo_colchon:
-        productos = productos.filter(tipo_colchon=tipo_colchon)
-
     if ordenar == "menor":
         productos = productos.order_by("precio")
-
     elif ordenar == "mayor":
         productos = productos.order_by("-precio")
-
-    paginator = Paginator(productos, 9)
-    page_number = request.GET.get('page')
-    productos = paginator.get_page(page_number)
+    else:
+        productos = productos.order_by("-precio")
 
     return render(request, "tienda/catalogo.html", {
         "productos": productos,
