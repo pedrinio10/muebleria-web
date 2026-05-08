@@ -47,6 +47,7 @@ class ProductoAdmin(ImportExportModelAdmin):
                 'nombre',
                 'categoria',
                 'descripcion',
+                'tipo_colchon',
             )
         }),
 
@@ -67,14 +68,6 @@ class ProductoAdmin(ImportExportModelAdmin):
             )
         }),
 
-        ('🛋 Datos del producto', {
-            'fields': (
-                'nombre',
-                'categoria',
-                'tipo_colchon',
-                'descripcion',
-            )
-        }),
     )
 
     readonly_fields = (
