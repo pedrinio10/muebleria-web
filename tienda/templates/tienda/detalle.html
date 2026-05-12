@@ -1,10 +1,8 @@
 {% extends 'tienda/base.html' %}
-
-{% block title %}{{ producto.nombre }}{% endblock %}
-
-{% extends 'tienda/base.html' %}
 {% load static %}
 {% load formatos %}
+
+{% block title %}{{ producto.nombre }}{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/detalle.css' %}">

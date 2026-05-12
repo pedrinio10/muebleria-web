@@ -1,13 +1,12 @@
 {% extends 'tienda/base.html' %}
+{% load static %}
 {% load formatos %}
 
 {% block title %}Catálogo | Mueblería Torres{% endblock %}
 
-{% load static %}
-
+{% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/catalogo.css' %}">
-
-{% block extra_css %}{% endblock %}
+{% endblock %}
 
 {% block content %}
 
