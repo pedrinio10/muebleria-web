@@ -94,3 +94,125 @@ footer{
     color:#ffffff !important;
     transform:scale(1.05);
 }
+.panel-admin{
+    min-height:80vh;
+    background:#f7f2ec;
+}
+
+.panel-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.panel-label{
+    display:inline-block;
+    background:#111;
+    color:#fff;
+    padding:6px 14px;
+    border-radius:999px;
+    font-size:.85rem;
+    margin-bottom:12px;
+}
+
+.panel-header h1{
+    font-weight:800;
+    margin-bottom:8px;
+}
+
+.panel-header p{
+    color:#6c6258;
+    margin:0;
+}
+
+.btn-panel-secundario{
+    background:#fff;
+    border:1px solid #ddd;
+    padding:12px 22px;
+    border-radius:999px;
+    color:#111;
+    text-decoration:none;
+    font-weight:700;
+}
+
+.panel-card{
+    background:#fff;
+    border-radius:22px;
+    padding:24px;
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+    border:1px solid rgba(0,0,0,.05);
+}
+
+.panel-card span{
+    font-size:2rem;
+}
+
+.panel-card h3{
+    font-size:2.3rem;
+    font-weight:800;
+    margin:12px 0 4px;
+}
+
+.panel-card p{
+    margin:0;
+    color:#6c6258;
+}
+
+.panel-card.alerta{
+    border-left:6px solid #dc3545;
+}
+
+.panel-card.oferta{
+    border-left:6px solid #f0a500;
+}
+
+.panel-actions{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:22px;
+}
+
+.panel-action-card{
+    background:#fff;
+    border-radius:24px;
+    padding:26px;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    text-decoration:none;
+    color:#111;
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+    transition:.25s;
+    border:1px solid rgba(0,0,0,.05);
+}
+
+.panel-action-card:hover{
+    transform:translateY(-4px);
+    color:#111;
+}
+
+.panel-action-card span{
+    font-size:2.3rem;
+}
+
+.panel-action-card h4{
+    font-weight:800;
+    margin-bottom:6px;
+}
+
+.panel-action-card p{
+    margin:0;
+    color:#6c6258;
+}
+
+@media(max-width:768px){
+    .panel-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .panel-actions{
+        grid-template-columns:1fr;
+    }
+}

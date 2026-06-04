@@ -1,6 +1,7 @@
 from .models import Producto
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
+from django.contrib.admin.views.decorators import staff_member_required
 
 def inicio(request):
     categoria = request.GET.get('categoria')
@@ -61,3 +62,19 @@ def detalle_producto(request, id):
         'producto': producto,
         'relacionados': relacionados
     })
+
+@staff_member_required
+def panel_admin(request):
+    total_productos = Producto.objects.count()
+    productos_stock = Producto.objects.filter(stock__gt=0).count()
+    productos_sin_stock = Producto.objects.filter(stock=0).count()
+    productos_oferta = Producto.objects.filter(en_oferta=True).count()
+
+    contexto = {
+        'total_productos': total_productos,
+        'productos_stock': productos_stock,
+        'productos_sin_stock': productos_sin_stock,
+        'productos_oferta': productos_oferta,
+    }
+
+    return render(request, 'tienda/panel.html', contexto)

@@ -1,0 +1,100 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+
+{% block title %}Panel Mueblería Torres{% endblock %}
+
+{% block content %}
+
+<section class="panel-admin">
+
+    <div class="container py-5">
+
+        <div class="panel-header mb-5">
+            <div>
+                <span class="panel-label">Administración</span>
+                <h1>Panel Mueblería Torres</h1>
+                <p>Gestioná productos, stock, ofertas e imágenes de forma simple.</p>
+            </div>
+
+            <a href="/admin/logout/" class="btn-panel-secundario">
+                Cerrar sesión
+            </a>
+        </div>
+
+        <div class="row g-4 mb-5">
+
+            <div class="col-md-3">
+                <div class="panel-card">
+                    <span>📦</span>
+                    <h3>{{ total_productos }}</h3>
+                    <p>Productos cargados</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="panel-card">
+                    <span>✅</span>
+                    <h3>{{ productos_stock }}</h3>
+                    <p>Con stock</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="panel-card alerta">
+                    <span>⚠️</span>
+                    <h3>{{ productos_sin_stock }}</h3>
+                    <p>Sin stock</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="panel-card oferta">
+                    <span>🔥</span>
+                    <h3>{{ productos_oferta }}</h3>
+                    <p>En oferta</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="panel-actions">
+
+            <a href="/admin/tienda/producto/" class="panel-action-card">
+                <span>📋</span>
+                <div>
+                    <h4>Ver productos</h4>
+                    <p>Editar precios, stock, imágenes y descripciones.</p>
+                </div>
+            </a>
+
+            <a href="/admin/tienda/producto/add/" class="panel-action-card">
+                <span>➕</span>
+                <div>
+                    <h4>Agregar producto</h4>
+                    <p>Cargar un producto nuevo al catálogo.</p>
+                </div>
+            </a>
+
+            <a href="/catalogo/" class="panel-action-card">
+                <span>🛒</span>
+                <div>
+                    <h4>Ver catálogo</h4>
+                    <p>Revisar cómo ve el cliente la página.</p>
+                </div>
+            </a>
+
+            <a href="/admin/" class="panel-action-card">
+                <span>⚙️</span>
+                <div>
+                    <h4>Admin avanzado</h4>
+                    <p>Entrar al administrador completo de Django.</p>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
