@@ -16,13 +16,29 @@
 
 <div class="row align-items-center g-5">
 
-{% block extra_js %}
-<script>
-function cambiarImagen(src){
-    document.getElementById("imagenPrincipal").src = src;
-}
-</script>
-{% endblock %}
+<div class="gallery-box">
+
+    {% if producto.imagen %}
+    <img id="imagenPrincipal" src="{{ producto.imagen.url }}" class="product-img main-gallery-img">
+    {% endif %}
+
+    <div class="thumbs-box">
+
+        {% if producto.imagen %}
+        <img src="{{ producto.imagen.url }}" class="thumb-img active-thumb" onclick="cambiarImagen(this)">
+        {% endif %}
+
+        {% if producto.imagen_2 %}
+        <img src="{{ producto.imagen_2.url }}" class="thumb-img" onclick="cambiarImagen(this)">
+        {% endif %}
+
+        {% if producto.imagen_3 %}
+        <img src="{{ producto.imagen_3.url }}" class="thumb-img" onclick="cambiarImagen(this)">
+        {% endif %}
+
+    </div>
+
+</div>
 
 <div class="col-md-6">
 
