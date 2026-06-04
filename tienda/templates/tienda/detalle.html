@@ -16,27 +16,13 @@
 
 <div class="row align-items-center g-5">
 
-<div class="col-md-6">
-{% if producto.imagen %}
-<img id="imagenPrincipal" src="{{ producto.imagen.url }}" class="product-img mb-3">
-{% endif %}
-
-<div class="d-flex gap-2 flex-wrap">
-
-    {% if producto.imagen %}
-    <img src="{{ producto.imagen.url }}" class="thumb-img" onclick="cambiarImagen(this.src)">
-    {% endif %}
-
-    {% if producto.imagen_2 %}
-    <img src="{{ producto.imagen_2.url }}" class="thumb-img" onclick="cambiarImagen(this.src)">
-    {% endif %}
-
-    {% if producto.imagen_3 %}
-    <img src="{{ producto.imagen_3.url }}" class="thumb-img" onclick="cambiarImagen(this.src)">
-    {% endif %}
-
-</div>
-</div>
+{% block extra_js %}
+<script>
+function cambiarImagen(src){
+    document.getElementById("imagenPrincipal").src = src;
+}
+</script>
+{% endblock %}
 
 <div class="col-md-6">
 
@@ -179,8 +165,15 @@ Ver producto
 
 {% block extra_js %}
 <script>
-function cambiarImagen(src){
-    document.getElementById("imagenPrincipal").src = src;
+function cambiarImagen(elemento){
+    const principal = document.getElementById("imagenPrincipal");
+    principal.src = elemento.src;
+
+    document.querySelectorAll(".thumb-img").forEach(img => {
+        img.classList.remove("active-thumb");
+    });
+
+    elemento.classList.add("active-thumb");
 }
 </script>
 {% endblock %}
