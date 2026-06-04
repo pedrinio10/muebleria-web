@@ -324,3 +324,52 @@
     margin-top:20px;
     backdrop-filter:blur(3px);
 }
+.panel-filtros-box{
+    background:#d28a3a;
+    border-radius:26px 26px 0 0;
+    padding:24px;
+    margin-bottom:0;
+}
+
+.panel-search{
+    display:flex;
+    gap:12px;
+    max-width:720px;
+    margin:0 auto 24px auto;
+}
+
+.panel-search input{
+    flex:1;
+    height:54px;
+    border-radius:999px;
+    border:2px solid #fff;
+    padding:0 22px;
+    font-size:1.1rem;
+    font-weight:600;
+    outline:none;
+}
+
+.panel-search button{
+    height:54px;
+    border:none;
+    background:#111;
+    color:#fff;
+    border-radius:999px;
+    padding:0 30px;
+    font-size:1.05rem;
+    font-weight:800;
+}
+
+.categorias-panel{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    flex-wrap:wrap;
+    margin:0;
+}
+
+.categoria-btn{
+    font-size:1.05rem;
+    font-weight:800;
+    padding:12px 22px;
+}
