@@ -216,3 +216,16 @@ footer{
         grid-template-columns:1fr;
     }
 }
+.btn-admin-nav{
+    background:#c0782d;
+    color:white !important;
+    border-radius:999px;
+    padding:10px 18px !important;
+    font-weight:800;
+    margin-left:10px;
+}
+
+.btn-admin-nav:hover{
+    background:#a86723;
+    color:white !important;
+}

@@ -35,10 +35,41 @@
 
 <div class="collapse navbar-collapse" id="menu">
 <ul class="navbar-nav ms-auto">
-<li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
-<li class="nav-item"><a class="nav-link" href="/catalogo/">Catálogo</a></li>
-<li class="nav-item"><a class="nav-link" href="/catalogo/?oferta=1">Ofertas</a></li>
-<li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/">Inicio</a>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/catalogo/">Catálogo</a>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/catalogo/?oferta=1">Ofertas</a>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link" href="#">Contacto</a>
+</li>
+
+{% if user.is_authenticated and user.is_staff %}
+
+<li class="nav-item">
+    <a class="nav-link btn-admin-nav" href="{% url 'panel_admin' %}">
+        Panel Admin
+    </a>
+</li>
+
+{% else %}
+
+<li class="nav-item">
+    <a class="nav-link btn-admin-nav" href="/admin/login/">
+        Ingresar
+    </a>
+</li>
+
+{% endif %}
+
 </ul>
 </div>
 
