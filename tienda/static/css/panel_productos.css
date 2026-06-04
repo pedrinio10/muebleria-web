@@ -247,3 +247,85 @@
     color:#fff;
     border-color:#111;
 }
+.edit-panel-box{
+    background: rgba(255,255,255,0.95);
+    border-radius: 30px;
+    padding: 40px;
+    box-shadow: 0 15px 40px rgba(0,0,0,.15);
+}
+
+.edit-panel-box h1{
+    font-size: 3rem;
+    font-weight: 800;
+    color: #111;
+}
+
+.edit-panel-box p{
+    color: #444;
+    font-size: 1.1rem;
+}
+
+.edit-panel-box label{
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 10px;
+}
+.edit-panel-box .form-control,
+.edit-panel-box .form-select{
+    height: 55px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.edit-panel-box textarea{
+    min-height: 180px;
+    font-size: 1.05rem;
+}
+.check-box-panel{
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #111;
+}
+
+.check-box-panel input{
+    transform: scale(1.5);
+    margin-right: 10px;
+}
+.btn-guardar-producto{
+    background:#111;
+    color:white;
+    border:none;
+    padding:16px 35px;
+    font-size:1.1rem;
+    font-weight:800;
+    border-radius:999px;
+}
+
+.btn-cancelar-producto{
+    background:#ddd;
+    color:#111;
+    padding:16px 35px;
+    font-size:1.1rem;
+    font-weight:800;
+    border-radius:999px;
+    text-decoration:none;
+}
+.panel-admin{
+    background-image:url('/static/img/fondo-madera.jpg');
+    background-repeat:repeat;
+    min-height:100vh;
+}
+.panel-admin{
+    background-image:url('/static/img/fondo-madera.jpg');
+    background-repeat:repeat;
+    min-height:100vh;
+}
+
+.panel-admin .container{
+    background:rgba(255,255,255,.88);
+    border-radius:30px;
+    padding:30px;
+    margin-top:20px;
+    backdrop-filter:blur(3px);
+}
