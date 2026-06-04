@@ -11,4 +11,5 @@ urlpatterns = [
     path('panel/productos/<int:producto_id>/restar-stock/', views.restar_stock_panel, name='restar_stock_panel'),
     path('panel/productos/<int:producto_id>/editar/', views.editar_producto_panel, name='editar_producto_panel'),
     path('panel/productos/agregar/', views.agregar_producto_panel, name='agregar_producto_panel'),
+    path("ingresar/", views.ingresar, name="ingresar"),
 ]

@@ -1,0 +1,56 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+
+{% block title %}Ingresar{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="login-page">
+
+    <div class="login-box">
+
+        <h1>Mueblería Torres</h1>
+
+        <p>
+            Ingresá para administrar el catálogo.
+        </p>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <input
+                type="text"
+                name="username"
+                placeholder="Usuario"
+                required
+            >
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Contraseña"
+                required
+            >
+
+            {% if error %}
+            <div class="error-box">
+                {{ error }}
+            </div>
+            {% endif %}
+
+            <button type="submit">
+                Ingresar
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}

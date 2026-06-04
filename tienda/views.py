@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
-
+from django.contrib.auth import authenticate, login, logout
 
 def inicio(request):
     categoria = request.GET.get('categoria')
@@ -187,3 +187,29 @@ def agregar_producto_panel(request):
         "categorias": Producto.CATEGORIAS,
         "tipos_colchon": Producto.TIPOS_COLCHON,
     })
+def ingresar(request):
+
+    error = None
+
+    if request.method == "POST":
+
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        user = authenticate(
+            request,
+            username=username,
+            password=password
+        )
+
+        if user is not None:
+            login(request, user)
+            return redirect("inicio")
+
+        error = "Usuario o contraseña incorrectos."
+
+    return render(
+        request,
+        "tienda/login.html",
+        {"error": error}
+    )
