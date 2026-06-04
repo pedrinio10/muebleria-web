@@ -18,8 +18,24 @@
 
 <div class="col-md-6">
 {% if producto.imagen %}
-<img src="{{ producto.imagen.url }}" class="product-img">
+<img id="imagenPrincipal" src="{{ producto.imagen.url }}" class="product-img mb-3">
 {% endif %}
+
+<div class="d-flex gap-2 flex-wrap">
+
+    {% if producto.imagen %}
+    <img src="{{ producto.imagen.url }}" class="thumb-img" onclick="cambiarImagen(this.src)">
+    {% endif %}
+
+    {% if producto.imagen_2 %}
+    <img src="{{ producto.imagen_2.url }}" class="thumb-img" onclick="cambiarImagen(this.src)">
+    {% endif %}
+
+    {% if producto.imagen_3 %}
+    <img src="{{ producto.imagen_3.url }}" class="thumb-img" onclick="cambiarImagen(this.src)">
+    {% endif %}
+
+</div>
 </div>
 
 <div class="col-md-6">
@@ -159,4 +175,10 @@ Ver producto
 
 </section>
 
+{% block extra_js %}
+<script>
+function cambiarImagen(src){
+    document.getElementById("imagenPrincipal").src = src;
+}
+</script>
 {% endblock %}

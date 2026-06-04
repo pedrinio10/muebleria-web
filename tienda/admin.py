@@ -63,9 +63,11 @@ class ProductoAdmin(ImportExportModelAdmin):
             )
         }),
 
-        ('🖼 Imagen', {
+        ('🖼 Imágenes', {
             'fields': (
                 'imagen',
+                'imagen_2',
+                'imagen_3',
                 'preview_imagen',
             )
         }),

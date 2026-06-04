@@ -43,6 +43,22 @@ class Producto(models.Model):
         null=True
     )
 
+    imagen_2 = models.ImageField(
+        "Imagen 2",
+        upload_to='productos/',
+        blank=True,
+        null=True
+    )
+
+    imagen_3 = models.ImageField(
+        "Imagen 3",
+        upload_to='productos/',
+        blank=True,
+        null=True
+    )
+
+
+
     en_oferta = models.BooleanField(
         "En oferta",
         default=False
