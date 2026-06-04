@@ -2,6 +2,7 @@ from .models import Producto
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
 from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib import messages
 
 
 def inicio(request):
@@ -83,15 +84,20 @@ def panel_admin(request):
 @staff_member_required
 def panel_productos(request):
     buscar = request.GET.get('buscar', '')
+    categoria = request.GET.get('categoria', '')
 
     productos = Producto.objects.all().order_by('nombre')
 
     if buscar:
         productos = productos.filter(nombre__icontains=buscar)
 
+    if categoria:
+        productos = productos.filter(categoria=categoria)
+
     return render(request, 'tienda/panel_productos.html', {
         'productos': productos,
         'buscar': buscar,
+        'categoria_actual': categoria,
     })
 
 
@@ -112,3 +118,72 @@ def restar_stock_panel(request, producto_id):
         producto.save()
 
     return redirect(request.META.get('HTTP_REFERER', 'panel_productos'))
+
+@staff_member_required
+def editar_producto_panel(request, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)
+
+    if request.method == "POST":
+        producto.nombre = request.POST.get("nombre")
+        producto.categoria = request.POST.get("categoria")
+        producto.tipo_colchon = request.POST.get("tipo_colchon", "")
+        producto.descripcion = request.POST.get("descripcion")
+        producto.precio = request.POST.get("precio") or 0
+        producto.stock = request.POST.get("stock") or 0
+        producto.en_oferta = request.POST.get("en_oferta") == "on"
+        producto.precio_oferta = request.POST.get("precio_oferta") or None
+        producto.mostrar_cuotas = request.POST.get("mostrar_cuotas") == "on"
+
+        if request.FILES.get("imagen"):
+            producto.imagen = request.FILES.get("imagen")
+
+        if request.FILES.get("imagen_2"):
+            producto.imagen_2 = request.FILES.get("imagen_2")
+
+        if request.FILES.get("imagen_3"):
+            producto.imagen_3 = request.FILES.get("imagen_3")
+
+        producto.save()
+
+        messages.success(request, "Producto actualizado correctamente.")
+        return redirect("panel_productos")
+
+    return render(request, "tienda/panel_editar_producto.html", {
+        "producto": producto,
+        "categorias": Producto.CATEGORIAS,
+        "tipos_colchon": Producto.TIPOS_COLCHON,
+    })
+
+@staff_member_required
+def agregar_producto_panel(request):
+    if request.method == "POST":
+        producto = Producto()
+
+        producto.nombre = request.POST.get("nombre")
+        producto.categoria = request.POST.get("categoria")
+        producto.tipo_colchon = request.POST.get("tipo_colchon", "")
+        producto.descripcion = request.POST.get("descripcion")
+        producto.precio = request.POST.get("precio") or 0
+        producto.stock = request.POST.get("stock") or 0
+        producto.en_oferta = request.POST.get("en_oferta") == "on"
+        producto.precio_oferta = request.POST.get("precio_oferta") or None
+        producto.mostrar_cuotas = request.POST.get("mostrar_cuotas") == "on"
+
+        if request.FILES.get("imagen"):
+            producto.imagen = request.FILES.get("imagen")
+
+        if request.FILES.get("imagen_2"):
+            producto.imagen_2 = request.FILES.get("imagen_2")
+
+        if request.FILES.get("imagen_3"):
+            producto.imagen_3 = request.FILES.get("imagen_3")
+
+        producto.save()
+
+        messages.success(request, "Producto agregado correctamente.")
+        return redirect("panel_productos")
+
+    return render(request, "tienda/panel_agregar_producto.html", {
+        "categorias": Producto.CATEGORIAS,
+        "tipos_colchon": Producto.TIPOS_COLCHON,
+    })

@@ -34,6 +34,45 @@
                 <button type="submit">Buscar</button>
             </form>
 
+            <div class="categorias-panel mb-4">
+
+                <a href="{% url 'panel_productos' %}"
+                   class="categoria-btn {% if not categoria_actual %}activa{% endif %}">
+                    Todos
+                </a>
+
+                <a href="?categoria=Mueble"
+                   class="categoria-btn {% if categoria_actual == 'Mueble' %}activa{% endif %}">
+                    Muebles
+                </a>
+
+                <a href="?categoria=Colchon"
+                   class="categoria-btn {% if categoria_actual == 'Colchon' %}activa{% endif %}">
+                    Colchones y Sommier
+                </a>
+
+                <a href="?categoria=Living"
+                   class="categoria-btn {% if categoria_actual == 'Living' %}activa{% endif %}">
+                    Living
+                </a>
+
+                <a href="?categoria=Cocina"
+                   class="categoria-btn {% if categoria_actual == 'Cocina' %}activa{% endif %}">
+                    Cocina
+                </a>
+
+                <a href="?categoria=Respaldar"
+                   class="categoria-btn {% if categoria_actual == 'Respaldar' %}activa{% endif %}">
+                    Respaldares
+                </a>
+
+                <a href="?categoria=Almohadas"
+                   class="categoria-btn {% if categoria_actual == 'Almohadas' %}activa{% endif %}">
+                    Almohadas
+                </a>
+
+            </div>
+
             <thead>
                 <tr>
                     <th>Foto</th>
@@ -91,8 +130,8 @@
 
                     <td>
 
-                        <a href="/admin/tienda/producto/{{ producto.id }}/change/"
-                           class="btn btn-sm btn-dark">
+                        <a href="{% url 'editar_producto_panel' producto.id %}"
+                           class="btn-editar">
                             Editar
                         </a>
 
