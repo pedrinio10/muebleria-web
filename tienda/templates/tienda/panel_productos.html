@@ -1,0 +1,119 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+{% block title %}Productos{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/panel_productos.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="container py-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h1 class="fw-bold">Productos</h1>
+            <p class="text-muted mb-0">
+                Gestioná stock, imágenes y descripciones.
+            </p>
+        </div>
+
+        <a href="{% url 'panel_admin' %}" class="btn btn-outline-dark rounded-pill">
+            Volver al panel
+        </a>
+
+    </div>
+
+    <div class="panel-table">
+
+        <table class="table align-middle bg-white rounded shadow-sm">
+
+            <form method="GET" class="panel-search mb-4">
+                <input type="text" name="buscar" value="{{ buscar }}" placeholder="Buscar producto...">
+                <button type="submit">Buscar</button>
+            </form>
+
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Producto</th>
+                    <th>Categoría</th>
+                    <th>Stock</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for producto in productos %}
+
+                <tr>
+
+                    <td style="width:90px;">
+
+                        {% if producto.imagen %}
+                        <img src="{{ producto.imagen.url }}"
+                             class="product-thumb">
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+                        <strong>{{ producto.nombre }}</strong>
+                    </td>
+
+                    <td>
+                        {{ producto.categoria }}
+                    </td>
+
+                    <td>
+
+                        <div class="stock-actions">
+
+                            <a href="{% url 'restar_stock_panel' producto.id %}"
+                               class="stock-btn minus">
+                                −
+                            </a>
+
+                            <span class="{% if producto.stock > 0 %}stock-ok{% else %}stock-bajo{% endif %}">
+                                {{ producto.stock }}
+                            </span>
+
+                            <a href="{% url 'sumar_stock_panel' producto.id %}"
+                               class="stock-btn plus">
+                                +
+                            </a>
+
+                        </div>
+
+                    </td>
+
+                    <td>
+
+                        <a href="/admin/tienda/producto/{{ producto.id }}/change/"
+                           class="btn btn-sm btn-dark">
+                            Editar
+                        </a>
+
+                        <a href="/producto/{{ producto.id }}/"
+                           target="_blank"
+                           class="btn btn-sm btn-outline-secondary">
+                            Ver
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+{% endblock %}

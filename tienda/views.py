@@ -1,7 +1,8 @@
 from .models import Producto
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
 from django.contrib.admin.views.decorators import staff_member_required
+
 
 def inicio(request):
     categoria = request.GET.get('categoria')
@@ -78,3 +79,36 @@ def panel_admin(request):
     }
 
     return render(request, 'tienda/panel.html', contexto)
+
+@staff_member_required
+def panel_productos(request):
+    buscar = request.GET.get('buscar', '')
+
+    productos = Producto.objects.all().order_by('nombre')
+
+    if buscar:
+        productos = productos.filter(nombre__icontains=buscar)
+
+    return render(request, 'tienda/panel_productos.html', {
+        'productos': productos,
+        'buscar': buscar,
+    })
+
+
+@staff_member_required
+def sumar_stock_panel(request, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)
+    producto.stock += 1
+    producto.save()
+    return redirect(request.META.get('HTTP_REFERER', 'panel_productos'))
+
+
+@staff_member_required
+def restar_stock_panel(request, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)
+
+    if producto.stock > 0:
+        producto.stock -= 1
+        producto.save()
+
+    return redirect(request.META.get('HTTP_REFERER', 'panel_productos'))
