@@ -27,16 +27,14 @@
 
     <div class="panel-table">
 
-        <table class="table align-middle bg-white rounded shadow-sm">
+        <div class="panel-filtros-box">
 
-            <div class="panel-filtros-box">
+            <form method="GET" class="panel-search">
+                <input type="text" name="buscar" value="{{ buscar }}" placeholder="Buscar producto...">
+                <button type="submit">Buscar</button>
+            </form>
 
-                <form method="GET" class="panel-search">
-                    <input type="text" name="buscar" value="{{ buscar }}" placeholder="Buscar producto...">
-                    <button type="submit">Buscar</button>
-                </form>
-
-                <div class="categorias-panel">
+            <div class="categorias-panel">
 
                 <a href="{% url 'panel_productos' %}"
                    class="categoria-btn {% if not categoria_actual %}activa{% endif %}">
@@ -73,8 +71,13 @@
                     Almohadas
                 </a>
 
-                </div>
             </div>
+
+        </div>
+
+        <table class="table align-middle bg-white rounded shadow-sm">
+
+            <thead>
 
             <thead>
                 <tr>
