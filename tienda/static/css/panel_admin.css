@@ -1,0 +1,139 @@
+.panel-admin{
+    min-height:100vh;
+    background-image:url('/static/img/fondo-madera.jpg');
+    background-repeat:repeat;
+    padding:30px 0;
+}
+
+.panel-admin .container{
+    background:rgba(245,239,231,.94);
+    border-radius:32px;
+    padding:40px;
+    box-shadow:0 18px 45px rgba(0,0,0,.20);
+}
+
+.panel-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.panel-label{
+    display:inline-block;
+    background:#111;
+    color:#fff;
+    padding:8px 18px;
+    border-radius:999px;
+    font-weight:800;
+    margin-bottom:14px;
+}
+
+.panel-header h1{
+    font-size:2.7rem;
+    font-weight:900;
+    color:#111;
+}
+
+.panel-header p{
+    font-size:1.1rem;
+    color:#4a3b30;
+}
+
+.btn-panel-secundario{
+    background:#fff;
+    border:2px solid #ddd;
+    padding:14px 26px;
+    border-radius:999px;
+    color:#111;
+    text-decoration:none;
+    font-weight:900;
+}
+
+.panel-card{
+    background:#fff;
+    border-radius:24px;
+    padding:28px;
+    box-shadow:0 12px 30px rgba(0,0,0,.10);
+    border:1px solid rgba(0,0,0,.05);
+}
+
+.panel-card span{
+    font-size:2.2rem;
+}
+
+.panel-card h3{
+    font-size:2.5rem;
+    font-weight:900;
+    margin:12px 0 4px;
+}
+
+.panel-card p{
+    font-size:1.05rem;
+    color:#4a3b30;
+    margin:0;
+}
+
+.panel-card.alerta{
+    border-left:7px solid #dc3545;
+}
+
+.panel-card.oferta{
+    border-left:7px solid #f0a500;
+}
+
+.panel-actions{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:24px;
+}
+
+.panel-action-card{
+    background:#fff;
+    border-radius:26px;
+    padding:28px;
+    display:flex;
+    align-items:center;
+    gap:22px;
+    text-decoration:none;
+    color:#111;
+    box-shadow:0 12px 30px rgba(0,0,0,.10);
+    transition:.25s;
+    border:1px solid rgba(0,0,0,.05);
+}
+
+.panel-action-card:hover{
+    transform:translateY(-4px);
+    color:#111;
+}
+
+.panel-action-card span{
+    font-size:2.5rem;
+}
+
+.panel-action-card h4{
+    font-size:1.5rem;
+    font-weight:900;
+    margin-bottom:6px;
+}
+
+.panel-action-card p{
+    margin:0;
+    color:#4a3b30;
+    font-size:1.05rem;
+}
+
+@media(max-width:768px){
+    .panel-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .panel-actions{
+        grid-template-columns:1fr;
+    }
+
+    .panel-admin .container{
+        padding:24px;
+    }
+}

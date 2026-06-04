@@ -1,9 +1,5 @@
-/* =========================
-   TABLA PRODUCTOS
-========================= */
-
 .panel-table{
-    background: #b66a27;
+    background:#fff;
     border-radius:24px;
     overflow:hidden;
     box-shadow:0 12px 30px rgba(0,0,0,.10);
@@ -27,7 +23,6 @@
 .panel-table td{
     padding:18px;
     vertical-align:middle;
-    font-size:1rem;
 }
 
 .product-thumb{
@@ -37,119 +32,63 @@
     border-radius:14px;
 }
 
-
-/* =========================
-   BUSCADOR Y CATEGORÍAS
-========================= */
+/* FILTROS */
 
 .panel-filtros-box{
     background:#d28a3a;
     border-radius:28px 28px 0 0;
-    padding:24px 28px;
+    padding:24px;
 }
 
-.panel-filtros-box .panel-search{
+.panel-search{
     display:flex;
-    width:100%;
+    justify-content:center;
+    gap:10px;
     max-width:620px;
     margin:0 auto 18px auto;
-    gap:10px;
 }
 
-.panel-filtros-box .panel-search input{
+.panel-search input{
     flex:1;
     height:44px;
+    border:none;
     border-radius:12px;
-    border:1px solid #ddd;
     padding:0 16px;
-    font-size:1rem;
-    outline:none;
 }
 
-.panel-filtros-box .panel-search button{
-    height:44px;
-    border-radius:12px;
+.panel-search button{
     border:none;
     background:#111;
     color:#fff;
+    border-radius:12px;
     padding:0 20px;
     font-weight:800;
 }
 
-.panel-filtros-box .categorias-panel{
+.categorias-panel{
     display:flex;
     justify-content:center;
-    align-items:center;
     gap:10px;
     flex-wrap:nowrap;
     overflow-x:auto;
-    padding-bottom:4px;
 }
 
-.panel-filtros-box .categoria-btn{
+.categoria-btn{
     text-decoration:none;
-    color:#111;
     background:#fff;
-    border:1px solid #ddd;
+    color:#111;
     padding:10px 18px;
     border-radius:999px;
     font-weight:800;
-    font-size:.95rem;
     white-space:nowrap;
-    transition:.25s;
 }
 
-.panel-filtros-box .categoria-btn:hover{
-    color:#111;
-    background:#f4f4f4;
-}
-
-.panel-filtros-box .categoria-btn.activa{
+.categoria-btn.activa{
     background:#111;
     color:#fff;
-    border-color:#111;
 }
 
-
-/* =========================
-   BOTONES
-========================= */
-
-.btn-editar{
-    background:#111;
-    color:#fff;
-    border:none;
-    border-radius:999px;
-    padding:8px 16px;
-    text-decoration:none;
-    font-weight:700;
-    display:inline-block;
-}
-
-.btn-editar:hover{
-    color:#fff;
-    opacity:.9;
-}
-
-.btn-ver{
-    border:1px solid #ccc;
-    border-radius:999px;
-    padding:8px 16px;
-    text-decoration:none;
-    color:#111;
-    margin-left:8px;
-    display:inline-block;
-}
-
-.btn-ver:hover{
-    background:#f4f4f4;
-    color:#111;
-}
-
-
-/* =========================
-   STOCK
-========================= */
+/* STOCK */
 
 .stock-actions{
     display:flex;
@@ -157,42 +96,37 @@
     gap:10px;
 }
 
-.stock-ok{
-    background:#198754;
-    color:#fff;
-    min-width:34px;
+.stock-ok,
+.stock-bajo{
+    width:34px;
     height:34px;
-    display:inline-flex;
+    display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:999px;
+    border-radius:50%;
+    color:#fff;
     font-weight:800;
+}
+
+.stock-ok{
+    background:#198754;
 }
 
 .stock-bajo{
     background:#dc3545;
-    color:#fff;
-    min-width:34px;
-    height:34px;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:999px;
-    font-weight:800;
 }
 
 .stock-btn{
     width:34px;
     height:34px;
-    display:inline-flex;
+    display:flex;
     align-items:center;
     justify-content:center;
     border-radius:50%;
     color:#fff;
     text-decoration:none;
-    font-weight:900;
     font-size:1.2rem;
-    transition:.2s;
+    font-weight:900;
 }
 
 .stock-btn.plus{
@@ -203,148 +137,21 @@
     background:#dc3545;
 }
 
-.stock-btn:hover{
-    color:#fff;
-    transform:scale(1.05);
-}
+/* BOTONES */
 
-
-/* =========================
-   FORM AGREGAR / EDITAR
-========================= */
-
-.edit-panel-box{
-    max-width:1200px;
-    margin:auto;
-    background:rgba(255,255,255,.95);
-    border-radius:30px;
-    padding:40px;
-    box-shadow:0 15px 40px rgba(0,0,0,.15);
-}
-
-.edit-panel-box h1{
-    font-size:3rem;
-    font-weight:800;
-    color:#111;
-}
-
-.edit-panel-box p{
-    color:#444;
-    font-size:1.1rem;
-}
-
-.edit-panel-box label{
-    font-size:1.15rem;
-    font-weight:800;
-    color:#111;
-    margin-bottom:10px;
-}
-
-.edit-panel-box .form-control,
-.edit-panel-box .form-select{
-    height:55px;
-    border-radius:14px;
-    padding:12px 14px;
-    font-size:1.1rem;
-    font-weight:600;
-}
-
-.edit-panel-box textarea.form-control{
-    min-height:180px;
-    height:auto;
-    font-size:1.05rem;
-    resize:vertical;
-}
-
-.edit-panel-box .form-control:focus,
-.edit-panel-box .form-select:focus{
-    border-color:#c77b30;
-    box-shadow:0 0 0 .2rem rgba(199,123,48,.15);
-}
-
-.preview-edit-img{
-    width:100%;
-    height:160px;
-    object-fit:contain;
-    background:#f8f5f1;
-    border-radius:16px;
-    margin-top:12px;
-    border:1px solid #eee;
-    transition:.25s;
-}
-
-.preview-edit-img:hover{
-    transform:scale(1.02);
-}
-
-.check-box-panel{
-    background:#f8f5f1;
-    border-radius:16px;
-    padding:15px;
-    width:100%;
-    display:flex;
-    gap:12px;
-    align-items:center;
-    font-size:1.1rem;
-    font-weight:800;
-    color:#111;
-}
-
-.check-box-panel input{
-    transform:scale(1.4);
-}
-
-.btn-guardar-producto{
+.btn-editar{
     background:#111;
     color:#fff;
-    border:none;
-    padding:16px 35px;
-    font-size:1.1rem;
-    font-weight:800;
-    border-radius:999px;
-}
-
-.btn-cancelar-producto{
-    background:#ddd;
-    color:#111;
-    padding:16px 35px;
-    font-size:1.1rem;
-    font-weight:800;
+    padding:8px 16px;
     border-radius:999px;
     text-decoration:none;
+    font-weight:800;
 }
 
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:768px){
-    .panel-filtros-box .panel-search{
-        flex-direction:column;
-    }
-
-    .panel-filtros-box .panel-search input,
-    .panel-filtros-box .panel-search button{
-        width:100%;
-    }
-
-    .panel-table td,
-    .panel-table th{
-        font-size:.9rem;
-        padding:14px;
-    }
-
-    .product-thumb{
-        width:60px;
-        height:60px;
-    }
-
-    .edit-panel-box{
-        padding:24px;
-    }
-
-    .edit-panel-box h1{
-        font-size:2rem;
-    }
+.btn-ver{
+    border:1px solid #ccc;
+    padding:8px 16px;
+    border-radius:999px;
+    text-decoration:none;
+    color:#111;
 }
