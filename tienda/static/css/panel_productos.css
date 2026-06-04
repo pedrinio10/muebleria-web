@@ -1,8 +1,12 @@
+/* =========================
+   TABLA PRODUCTOS
+========================= */
+
 .panel-table{
-    background: #ce873c;
+    background:#fff;
     border-radius:24px;
     overflow:hidden;
-    box-shadow:0 12px 30px rgba(0,0,0,.08);
+    box-shadow:0 12px 30px rgba(0,0,0,.10);
 }
 
 .panel-table table{
@@ -11,17 +15,19 @@
 
 .panel-table thead{
     background:#111;
-    color: #c0782d;
+    color:#fff;
 }
 
 .panel-table th{
     padding:18px;
     border:none;
+    font-size:1rem;
 }
 
 .panel-table td{
     padding:18px;
     vertical-align:middle;
+    font-size:1rem;
 }
 
 .product-thumb{
@@ -31,18 +37,97 @@
     border-radius:14px;
 }
 
+
+/* =========================
+   BUSCADOR Y CATEGORÍAS
+========================= */
+
+.panel-filtros-box{
+    background:#d28a3a;
+    border-radius:28px 28px 0 0;
+    padding:24px 28px;
+}
+
+.panel-filtros-box .panel-search{
+    display:flex;
+    width:100%;
+    max-width:620px;
+    margin:0 auto 18px auto;
+    gap:10px;
+}
+
+.panel-filtros-box .panel-search input{
+    flex:1;
+    height:44px;
+    border-radius:12px;
+    border:1px solid #ddd;
+    padding:0 16px;
+    font-size:1rem;
+    outline:none;
+}
+
+.panel-filtros-box .panel-search button{
+    height:44px;
+    border-radius:12px;
+    border:none;
+    background:#111;
+    color:#fff;
+    padding:0 20px;
+    font-weight:800;
+}
+
+.panel-filtros-box .categorias-panel{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    padding-bottom:4px;
+}
+
+.panel-filtros-box .categoria-btn{
+    text-decoration:none;
+    color:#111;
+    background:#fff;
+    border:1px solid #ddd;
+    padding:10px 18px;
+    border-radius:999px;
+    font-weight:800;
+    font-size:.95rem;
+    white-space:nowrap;
+    transition:.25s;
+}
+
+.panel-filtros-box .categoria-btn:hover{
+    color:#111;
+    background:#f4f4f4;
+}
+
+.panel-filtros-box .categoria-btn.activa{
+    background:#111;
+    color:#fff;
+    border-color:#111;
+}
+
+
+/* =========================
+   BOTONES
+========================= */
+
 .btn-editar{
     background:#111;
-    color:white;
+    color:#fff;
     border:none;
     border-radius:999px;
     padding:8px 16px;
     text-decoration:none;
-    font-weight:600;
+    font-weight:700;
+    display:inline-block;
 }
 
 .btn-editar:hover{
-    color:white;
+    color:#fff;
     opacity:.9;
 }
 
@@ -53,50 +138,47 @@
     text-decoration:none;
     color:#111;
     margin-left:8px;
+    display:inline-block;
 }
 
-.stock-ok{
-    background:#198754;
-    color:white;
-    padding:6px 12px;
-    border-radius:999px;
-    font-weight:600;
+.btn-ver:hover{
+    background:#f4f4f4;
+    color:#111;
 }
 
-.stock-bajo{
-    background:#dc3545;
-    color:white;
-    padding:6px 12px;
-    border-radius:999px;
-    font-weight:600;
-}
-.panel-search{
-    display:flex;
-    gap:12px;
-    max-width:520px;
-}
 
-.panel-search input{
-    flex:1;
-    border:1px solid #ddd;
-    border-radius:999px;
-    padding:13px 18px;
-    outline:none;
-}
-
-.panel-search button{
-    border:none;
-    background:#111;
-    color:white;
-    border-radius:999px;
-    padding:13px 22px;
-    font-weight:700;
-}
+/* =========================
+   STOCK
+========================= */
 
 .stock-actions{
     display:flex;
     align-items:center;
     gap:10px;
+}
+
+.stock-ok{
+    background:#198754;
+    color:#fff;
+    min-width:34px;
+    height:34px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:999px;
+    font-weight:800;
+}
+
+.stock-bajo{
+    background:#dc3545;
+    color:#fff;
+    min-width:34px;
+    height:34px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:999px;
+    font-weight:800;
 }
 
 .stock-btn{
@@ -106,10 +188,11 @@
     align-items:center;
     justify-content:center;
     border-radius:50%;
-    color:white;
+    color:#fff;
     text-decoration:none;
     font-weight:900;
     font-size:1.2rem;
+    transition:.2s;
 }
 
 .stock-btn.plus{
@@ -121,46 +204,62 @@
 }
 
 .stock-btn:hover{
-    color:white;
+    color:#fff;
     transform:scale(1.05);
 }
-.panel-search{
-    display:flex;
-    gap:12px;
-    margin-bottom:25px;
-}
 
-.panel-search input{
-    flex:1;
-    padding:14px 18px;
-    border-radius:999px;
-    border:1px solid #ddd;
-}
 
-.panel-search button{
-    border:none;
-    background:#111;
-    color:white;
-    border-radius:999px;
-    padding:0 25px;
-    font-weight:700;
-}
+/* =========================
+   FORM AGREGAR / EDITAR
+========================= */
+
 .edit-panel-box{
-    background:#fff;
-    border-radius:28px;
-    padding:35px;
-    box-shadow:0 12px 35px rgba(0,0,0,.10);
+    max-width:1200px;
+    margin:auto;
+    background:rgba(255,255,255,.95);
+    border-radius:30px;
+    padding:40px;
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+}
+
+.edit-panel-box h1{
+    font-size:3rem;
+    font-weight:800;
+    color:#111;
+}
+
+.edit-panel-box p{
+    color:#444;
+    font-size:1.1rem;
 }
 
 .edit-panel-box label{
-    font-weight:700;
-    margin-bottom:8px;
+    font-size:1.15rem;
+    font-weight:800;
+    color:#111;
+    margin-bottom:10px;
 }
 
 .edit-panel-box .form-control,
 .edit-panel-box .form-select{
+    height:55px;
     border-radius:14px;
     padding:12px 14px;
+    font-size:1.1rem;
+    font-weight:600;
+}
+
+.edit-panel-box textarea.form-control{
+    min-height:180px;
+    height:auto;
+    font-size:1.05rem;
+    resize:vertical;
+}
+
+.edit-panel-box .form-control:focus,
+.edit-panel-box .form-select:focus{
+    border-color:#c77b30;
+    box-shadow:0 0 0 .2rem rgba(199,123,48,.15);
 }
 
 .preview-edit-img{
@@ -171,6 +270,11 @@
     border-radius:16px;
     margin-top:12px;
     border:1px solid #eee;
+    transition:.25s;
+}
+
+.preview-edit-img:hover{
+    transform:scale(1.02);
 }
 
 .check-box-panel{
@@ -179,122 +283,20 @@
     padding:15px;
     width:100%;
     display:flex;
-    gap:10px;
+    gap:12px;
     align-items:center;
-}
-
-.btn-guardar-producto{
-    background:#111;
-    color:#fff;
-    border:none;
-    padding:14px 28px;
-    border-radius:999px;
+    font-size:1.1rem;
     font-weight:800;
-}
-
-.btn-cancelar-producto{
-    background:#f1f1f1;
     color:#111;
-    padding:14px 28px;
-    border-radius:999px;
-    font-weight:800;
-    text-decoration:none;
-}
-.edit-panel-box{
-    max-width:1200px;
-    margin:auto;
-}
-
-.edit-panel-box textarea{
-    resize:vertical;
-}
-
-.edit-panel-box .form-control:focus,
-.edit-panel-box .form-select:focus{
-    border-color:#c77b30;
-    box-shadow:0 0 0 0.2rem rgba(199,123,48,.15);
-}
-
-.preview-edit-img:hover{
-    transform:scale(1.02);
-    transition:.25s;
-}
-.categorias-panel{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-bottom:25px;
-}
-
-.categoria-btn{
-    text-decoration:none;
-    color:#111;
-    background:#fff;
-    border:1px solid #ddd;
-    padding:10px 18px;
-    border-radius:999px;
-    font-weight:600;
-    transition:.25s;
-}
-
-.categoria-btn:hover{
-    color:#111;
-    background:#f4f4f4;
-}
-
-.categoria-btn.activa{
-    background:#111;
-    color:#fff;
-    border-color:#111;
-}
-.edit-panel-box{
-    background: rgba(255,255,255,0.95);
-    border-radius: 30px;
-    padding: 40px;
-    box-shadow: 0 15px 40px rgba(0,0,0,.15);
-}
-
-.edit-panel-box h1{
-    font-size: 3rem;
-    font-weight: 800;
-    color: #111;
-}
-
-.edit-panel-box p{
-    color: #444;
-    font-size: 1.1rem;
-}
-
-.edit-panel-box label{
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: #111;
-    margin-bottom: 10px;
-}
-.edit-panel-box .form-control,
-.edit-panel-box .form-select{
-    height: 55px;
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.edit-panel-box textarea{
-    min-height: 180px;
-    font-size: 1.05rem;
-}
-.check-box-panel{
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #111;
 }
 
 .check-box-panel input{
-    transform: scale(1.5);
-    margin-right: 10px;
+    transform:scale(1.4);
 }
+
 .btn-guardar-producto{
     background:#111;
-    color:white;
+    color:#fff;
     border:none;
     padding:16px 35px;
     font-size:1.1rem;
@@ -311,116 +313,38 @@
     border-radius:999px;
     text-decoration:none;
 }
-.panel-admin{
-    background-image:url('/static/img/fondo-madera.jpg');
-    background-repeat:repeat;
-    min-height:100vh;
-}
 
-.panel-admin .container{
-    background:rgba(255,255,255,.88);
-    border-radius:30px;
-    padding:30px;
-    margin-top:20px;
-    backdrop-filter:blur(3px);
-}
-.panel-filtros-box{
-    background:#d28a3a;
-    border-radius:26px 26px 0 0;
-    padding:24px;
-    margin-bottom:0;
-}
 
-.panel-search{
-    display:flex;
-    gap:12px;
-    max-width:720px;
-    margin:0 auto 24px auto;
-}
+/* =========================
+   RESPONSIVE
+========================= */
 
-.panel-search input{
-    flex:1;
-    height:54px;
-    border-radius:999px;
-    border:2px solid #fff;
-    padding:0 22px;
-    font-size:1.1rem;
-    font-weight:600;
-    outline:none;
-}
+@media(max-width:768px){
+    .panel-filtros-box .panel-search{
+        flex-direction:column;
+    }
 
-.panel-search button{
-    height:54px;
-    border:none;
-    background:#111;
-    color:#fff;
-    border-radius:999px;
-    padding:0 30px;
-    font-size:1.05rem;
-    font-weight:800;
-}
+    .panel-filtros-box .panel-search input,
+    .panel-filtros-box .panel-search button{
+        width:100%;
+    }
 
-.categorias-panel{
-    display:flex;
-    justify-content:center;
-    gap:14px;
-    flex-wrap:wrap;
-    margin:0;
-}
+    .panel-table td,
+    .panel-table th{
+        font-size:.9rem;
+        padding:14px;
+    }
 
-.categoria-btn{
-    font-size:1.05rem;
-    font-weight:800;
-    padding:12px 22px;
-}
-.panel-filtros-box{
-    background:#d28a3a !important;
-    border-radius:28px 28px 0 0 !important;
-    padding:30px 35px !important;
-    margin-bottom:0 !important;
-}
+    .product-thumb{
+        width:60px;
+        height:60px;
+    }
 
-.panel-filtros-box .panel-search{
-    display:flex !important;
-    justify-content:center !important;
-    align-items:center !important;
-    gap:14px !important;
-    max-width:780px !important;
-    margin:0 auto 28px auto !important;
-}
+    .edit-panel-box{
+        padding:24px;
+    }
 
-.panel-filtros-box .panel-search input{
-    width:100% !important;
-    height:58px !important;
-    border-radius:999px !important;
-    border:2px solid #fff !important;
-    padding:0 24px !important;
-    font-size:1.15rem !important;
-    font-weight:700 !important;
-}
-
-.panel-filtros-box .panel-search button{
-    height:58px !important;
-    border:none !important;
-    background:#111 !important;
-    color:#fff !important;
-    border-radius:999px !important;
-    padding:0 34px !important;
-    font-size:1.1rem !important;
-    font-weight:900 !important;
-}
-
-.panel-filtros-box .categorias-panel{
-    display:flex !important;
-    justify-content:center !important;
-    align-items:center !important;
-    gap:14px !important;
-    flex-wrap:wrap !important;
-}
-
-.panel-filtros-box .categoria-btn{
-    font-size:1.08rem !important;
-    font-weight:900 !important;
-    padding:13px 24px !important;
-    border-radius:999px !important;
+    .edit-panel-box h1{
+        font-size:2rem;
+    }
 }
